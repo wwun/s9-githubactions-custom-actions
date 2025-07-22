@@ -10,9 +10,12 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: Load and cache dependencies
+        id: cache-deps
         uses: ./.github/actions/cached-deps #adding the action created
         with:
           caching: 'false' # as the ustom action is defined, this false value is a parameter to disable caching, go to actions yml to verfy
+      - name: output information
+        run: echo "cache used? ${{ steps.cache-deps.outputs.used-cache }}" # using the output defined in action yml
       - name: Lint code
         run: npm run lint
   test:
