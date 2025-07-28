@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: 'the folder containing the deployable files'
     required: true
+outputs:  #output created to be used by js file as core.setOutput('website-url', websiteUrl)
+  website-url:
+    description: 'the url of the deployed website'
 runs:
   using: 'node16'
   main: 'main.js'

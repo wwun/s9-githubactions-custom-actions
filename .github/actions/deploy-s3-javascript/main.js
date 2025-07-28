@@ -13,7 +13,9 @@ function run() {
     //upload files
     const s3Uri = `s3://${bucket}`;
     exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`);   //execute cli aws commands
-    core.notice('Hello from my custom js action');
+
+    const websiteUrl = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`; //Subida de archivos: La acción utiliza la CLI de AWS para sincronizar los archivos de la carpeta de distribución con el bucket de S3. El comando aws s3 sync se ejecuta con los parámetros ${distFolder} y ${s3Uri} (que se construye a partir del nombre del bucket)
+    core.setOutput('website-url', websiteUrl);  //::set-outpu   //used to set a value to the output variable in action yml as outputs:   website-url:       description: 'the url of the deployed website'
 }
 
 run();
