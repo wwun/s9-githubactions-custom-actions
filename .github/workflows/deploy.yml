@@ -63,11 +63,10 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
-        run: echo "Deploying..."
-  information:
-    runs-on: ubuntu-latest
-    steps:
-      - name: get code
-        uses: actions/checkout@v4
-      - name: run custom action
-        uses: ./.github/actions/deploy-s3-javascript
+        uses: ./.github/actions/deploy-s3-javascript  #using the js file created
+        env:
+          AWS_ACCESS_KEY_ID: AKIAWRU4UZYWB255LQXD #it should be added in github actions and change it by $.{{secrets.AWS_ACCESS_KEY_ID}} ,omitir el punto
+          AWS_SECRET_ACCESS_KEY: VJAffh2qnQGSd0Z8p3SWu3xZJozu74JTdNEyW10  #it should be added in github actions $.{{secrets.AWS_SECRET_ACCESS_KEY}}
+        with:
+          bucket: github-custom-action-hosting #bucket name created on aws
+          dist-folder: ./dist
