@@ -64,7 +64,7 @@ jobs:
         run: ls
       - name: Deploy site
         id: deploy
-        uses: ./.github/actions/deploy-s3-javascript  #using the js file created
+        uses: ./.github/actions/deploy-s3-javascript  #using the js file created  #to try dockerfile just change javascript by docker
         env:
           AWS_ACCESS_KEY_ID: AKIAWRU4UZYWB255LQXD #it should be added in github actions and change it by $.{{secrets.AWS_ACCESS_KEY_ID}} ,omitir el punto
           AWS_SECRET_ACCESS_KEY: VJAffh2qnQGSd0Z8p3SWu3xZJozu74JTdNEyW10  #it should be added in github actions $.{{secrets.AWS_SECRET_ACCESS_KEY}}
